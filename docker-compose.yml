@@ -9,8 +9,8 @@ services:
     volumes:
     # Mount this code into /code
       - ./:/usr/share/nginx/html:ro
+      - ./config/default.conf:/etc/nginx/conf.d/default.conf:ro
     environment:
-      NGINX_PORT: ${LANDING_VPORT}
       VIRTUAL_HOST: ${LANDING_VHOST}
       VIRTUAL_PORT: ${LANDING_VPORT}
       LETSENCRYPT_HOST: ${LANDING_VHOST}
