@@ -4,6 +4,8 @@ services:
     container_name: dimosio-landing
     restart: unless-stopped
     image: nginx
+    networks:
+     - nginx-proxy
     volumes:
     # Mount this code into /code
       - ./:/usr/share/nginx/html:ro
@@ -14,3 +16,8 @@ services:
       LETSENCRYPT_EMAIL: ${EMAIL}
     expose:
       - 80
+
+networks:
+  nginx-proxy:
+    external:
+      name: proxy_default
