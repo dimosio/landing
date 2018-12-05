@@ -1,0 +1,16 @@
+version: "3"
+services:
+  landing:
+    container_name: dimosio-landing
+    restart: unless-stopped
+    image: nginx
+    volumes:
+    # Mount this code into /code
+      - ./:/usr/share/nginx/html:ro
+    environment:
+      VIRTUAL_HOST: ${LANDING_VHOST}
+      VIRTUAL_PORT: ${LANDING_VPORT}
+      LETSENCRYPT_HOST: ${LANDING_VHOST}
+      LETSENCRYPT_EMAIL: ${EMAIL}
+    expose:
+      - 80
